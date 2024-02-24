@@ -41,6 +41,6 @@ CREATE TABLE T_Ad (
 		title			NVARCHAR(512),
 		imgUrl			NVARCHAR(512),
 		link			NVARCHAR(512),
-		advertiser_id   INT,
+		advertiser_id	INT,
 		FOREIGN KEY (advertiser_id) REFERENCES T_Advertiser (id)
 );
