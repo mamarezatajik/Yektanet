@@ -6,7 +6,7 @@ CREATE DATABASE Advertising_management;
 
 -- Drop database:
 
-DROP DATABASE Advertising_management;
+DROP DATABASE IF EXISTS Advertising_management;
 
 
 
@@ -25,6 +25,8 @@ USE [Advertising_management]
 
 CREATE TABLE T_Advertiser (
 		id				INT					PRIMARY KEY,
+		clicks			INT,
+		views			INT,
 		name			NVARCHAR(512)
 	);
 
@@ -34,6 +36,8 @@ CREATE TABLE T_Advertiser (
 
 CREATE TABLE T_Ad (
 		id				INT					PRIMARY KEY,
+		clicks			INT,
+		views			INT,
 		title			NVARCHAR(512),
 		imgUrl			NVARCHAR(512),
 		link			NVARCHAR(512),
