@@ -9,11 +9,11 @@ class BaseAdvertising(models.Model):
 
 
     def inc_clicks(self):
-        self.__clicks += 1
+        self.clicks += 1
         self.save()
 
     def inc_views(self):
-        self.__views += 1
+        self.views += 1
         self.save()
 
     class Meta:
@@ -24,7 +24,7 @@ class BaseAdvertising(models.Model):
         return cls.objects.aggregate(models.Sum('clicks'))['clicks__sum']
 
 
-
+    
 
 class Advertiser(BaseAdvertising):
     name = models.CharField(max_length = 200)
@@ -38,7 +38,7 @@ class Ad(BaseAdvertising):
     title = models.CharField(max_length = 200)
     imgUrl = models.CharField(max_length = 200)
     link = models.CharField(max_length = 200)
-    advertiser = models.ForeignKey(Advertiser, on_delete = models.CASCADE)
+    advertiser = models.ForeignKey(Advertiser, related_name = 'ads', on_delete = models.CASCADE)
 
     def inc_clicks(self):
         self.advertiser.inc_clicks()
